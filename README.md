@@ -1,1 +1,0 @@
-# egalish.github.io
