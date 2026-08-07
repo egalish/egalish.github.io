@@ -3,6 +3,7 @@ description: Web application penetration testing write-ups and vulnerability res
 theme: just-the-docs
 
 url: "https://egalish.github.io"
+remote_theme: just-the-docs/just-the-docs
 
 # Search
 search_enabled: true
@@ -55,3 +56,4 @@ callouts:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-remote-theme
