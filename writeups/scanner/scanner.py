@@ -12,9 +12,9 @@ from string import ascii_lowercase
 from http.server import HTTPServer,SimpleHTTPRequestHandler
 
 
-START_IMPORT = ""
-CHECK_IMPORT = ""
-CANCEL_IMPORT = ""
+START_IMPORT = "" # URL to start import
+CHECK_IMPORT = "" # URL to check import status
+CANCEL_IMPORT = "" # URL to cancel import
 
 
 def print_colored(msg):
@@ -61,7 +61,7 @@ class Handler(SimpleHTTPRequestHandler):
     request_queue = Queue(10)
     verbose = False
     filename = None
-    content_length = 94969
+    content_length = 94969 # Default Content-Length
     use_random = True
 
     def do_PROPFIND(self):
@@ -299,3 +299,85 @@ class Scanner():
         target_tid = ctypes.c_long(self.server_thread.ident)
         exc = ctypes.py_object(SystemExit)
         res = ctypes.pythonapi.PyThreadState_SetAsyncExc(target_tid, exc)
+
+
+
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers()
+
+    scan_parser = subparsers.add_parser(name="scan")
+    get_parser = subparsers.add_parser(name="get")
+
+    scan_parser.add_argument("-t", "--targets", required=True)
+    scan_parser.add_argument("-s", "--server-url", required=True)
+    scan_parser.add_argument("-l", "--logfile", default="scan.log")
+    scan_parser.add_argument("-v", "--verbose", action="store_true")
+    
+    get_parser.add_argument("-s", "--server-url", required=True)
+    get_parser.add_argument("-u", "--url", required=True)
+    get_parser.add_argument("-o", "--output-file", default=None)
+    get_parser.add_argument("-v", "--verbose", action="store_true")
+
+    args = parser.parse_args()
+    
+    match sys.argv[1]:
+
+        case "scan":
+            with open(args.targets, "r") as f:
+                targets = f.read()[:-1].split("\n")
+            
+            server_url = args.server_url
+            logfile = args.logfile
+            verbose = args.verbose
+            
+            try:
+                scanner = Scanner(
+                    server_url,
+                    target_list=targets,
+                    logfile=logfile,
+                    verbose=verbose
+                    )
+
+                scanner.scan()
+                scanner.close()
+            except KeyboardInterrupt:
+                scanner.close()
+                exit(1)
+            except Exception as e:
+                print_colored(f"[!] Encountered Exception in main: {e}")
+                exit(1)
+
+        case "get":
+            try:
+                server_url = args.server_url
+                target_url = args.url.replace("\\r", "\r").replace("\\n", "\n")
+                filename = args.output_file
+                verbose = args.verbose
+
+                scanner = Scanner(
+                    server_url,
+                    verbose=verbose
+                )
+
+                scanner.get(target_url, filename)
+                scanner.close()
+            except KeyboardInterrupt:
+                scanner.close()
+                exit(1)
+            except Exception as e:
+                print_colored(f"[!] Encountered Exception in main: {e}")
+                exit(1)
+
+        case _:
+            print_colored(f"[*] Unrecognized command {sys.argv[1]}")
+            exit(1)
+
+
+
+
+if __name__ == "__main__":
+    main()

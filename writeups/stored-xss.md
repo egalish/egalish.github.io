@@ -5,7 +5,7 @@ nav_order: 1
 tags: [xss]
 ---
 
-# Blind SSRF in image proxy
+# Stored XSS in legacy appplication
 {: .no_toc }
 
 **Severity:** Medium, CVSS 4.3 (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N)  

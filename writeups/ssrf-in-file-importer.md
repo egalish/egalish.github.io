@@ -72,24 +72,15 @@ With it, I was able to identify a Prometheus instance which dumped thousands of 
 A couple of limitations prevented straightforward escalation, namely:
 
 - Only ```GET``` requests can be made
-- The client does not accept the authority that signed the certificates for internal the services, making HTTPS connection to internal hosts impossible
+- The client does not accept the authority that signed the certificates for internal services, making HTTPS connection to internal hosts impossible
 
 I then reported the vulnerability to the company, making it known I had the intention of continuing testing to try to escalate this further, which I believe would likely have been possible by the sheer amount of internal services available, some of them being debugging instances. Unfortunately the company didn't allow this and patched the vulnerability only an hour later
 
 <details markdown="1">
-<summary>Full source: <code>scanner.py</code></summary>
+<summary>Scanner: <code>scanner.py</code></summary>
 
 {% highlight python %}
 {% include_relative scanner/scanner.py %}
-{% endhighlight %}
-
-</details>
-
-<details markdown="1">
-<summary>Full source: <code>ssrf.py</code></summary>
-
-{% highlight python %}
-{% include_relative scanner/ssrf.py %}
 {% endhighlight %}
 
 </details>
