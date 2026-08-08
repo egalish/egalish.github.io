@@ -1,7 +1,7 @@
 ---
 title: Stored XSS in legacy application
 parent: Writeups
-nav_order: 1
+nav_order: 4
 tags: [xss]
 ---
 

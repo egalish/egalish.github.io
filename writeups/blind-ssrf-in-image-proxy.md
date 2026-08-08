@@ -1,7 +1,7 @@
 ---
 title: Blind SSRF in image proxy
 parent: Writeups
-nav_order: 1
+nav_order: 3
 tags: [ssrf, cloudfront, image proxy]
 ---
 
