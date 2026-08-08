@@ -9,7 +9,7 @@ tags: [xss]
 {: .no_toc }
 
 **Severity:** Medium, CVSS 4.3 (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N)  
-**Vulnerability Class:** CWE-918: Server-Side Request Forgery (SSRF)  
+**Vulnerability Class:** CWE-79: Improper Neutralization of Input During Web Page Generation
 **Impact:** Internal network enumeration  
 
 ## Table of Contents
