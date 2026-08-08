@@ -32,6 +32,10 @@ enable_copy_code_button: true
 aux_links:
   "View on GitHub":
     - "https://github.com/egalish/egalish.github.io"
+  "CV (EN)":
+    - "/assets/cv/Gabriele-Forni-Resume-ENG.pdf"
+  "CV (IT)":
+    - "/assets/cv/Gabriele-Forni-CV-ITA.pdf"
 
 # Color scheme
 color_scheme: dark
