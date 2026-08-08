@@ -10,7 +10,7 @@ tags: [xss]
 
 **Severity:** Medium, CVSS 4.3 (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N)  
 **Vulnerability Class:** CWE-79: Improper Neutralization of Input During Web Page Generation
-**Impact:** Internal network enumeration  
+**Impact:** Cross-domain session riding, performing actions on the victim's behalf on the primary application
 
 ## Table of Contents
 {: .no_toc .text-delta }
