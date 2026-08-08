@@ -5,7 +5,7 @@ nav_order: 1
 tags: [xss]
 ---
 
-# Stored XSS in legacy appplication
+# Stored XSS in legacy application
 {: .no_toc }
 
 **Severity:** Medium, CVSS 4.3 (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N)  
