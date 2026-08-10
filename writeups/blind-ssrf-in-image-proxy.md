@@ -44,7 +44,7 @@ would cause the proxy to make a HTTP request to `target_host:port`.
 
 The reason this happens is likely because the "allowlist checker" incorrectly treats `#` as part of the `username:password` combination, which goes against the RFC, as `#` is considered a reserved character.
 
-The fetching components instead treats it as a URL fragment, ignoring everything that comes after
+The fetching component instead treats it as a URL fragment, ignoring everything that comes after
 
 ## Attempts at Exploitation
 The exploitability and impact of this vulnerability are very limited. The "blind" in the title stems from the fact that, unless specific conditions are met, the proxy just returns with the error `400: Not an Image`.

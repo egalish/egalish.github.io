@@ -167,8 +167,8 @@ GET /directory-to-cause-302?<script>SCRIPT</script> HTTP/1.1
 X: Y
 ```
 
-### Method 3: Mass 0-click Account Takeover
-Although I was not able to verify this as this was unauthenticated testing, it is very likely that an authenticated attacker can leverage this vulnerability to steal Authorization tokens or session cookies from random users.
+### Method 3: Mass 0-click Account Takeover (Unverified but probable)
+I was not provided with an account, but it is very likely that an authenticated attacker can leverage this vulnerability to directly steal Authorization tokens or session cookies from random users.
 
 The site had a couple of functionalities to create files or otherwise textual resources. These could have been used to log victims requests into the attacker account by smuggling
 
@@ -180,3 +180,5 @@ Content-Length: 1000
 
 target_param=
 ```
+
+where target_param is a parameter that will be reflected somwhere on the platform. With this payload, the first 1000 bytes of a victim user's request would be saved on the attacker account, including authenticating information.

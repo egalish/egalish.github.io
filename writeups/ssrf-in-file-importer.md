@@ -60,7 +60,7 @@ Standard SSRF protections were in place, but they did not account for redirectio
 
 ## Exploitation
 
-Through trial and error, I've identified distinct behaviours to infer if the IP/host the importer is redirected to exist, and whether the specified port is open. Specifically:
+Through trial and error, I've identified distinct behaviours to infer if the IP/host the importer is redirected to exist, and whether the specified port is open, based on the requests attempted by the importer towards the redirect server. Specifically:
 
 - ~5 ```GET``` requests in an instant, then one request every 2 seconds for ~10 minutes means the host exists, but the port is closed.
 - 1 ```GET``` request every minute means the host is down
